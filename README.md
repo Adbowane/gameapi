@@ -1,68 +1,54 @@
-# Video Game Collections API
+# GameCollect Backend
 
-A RESTful API for managing video game collections, built with Express.js.
+API Backend pour l'application de gestion de collection de jeux vidéo.
 
-## Features
+## Installation
 
-- Full CRUD operations for video game collections
-- RESTful API design
-- Input validation
-- Error handling
-- Modular architecture
+1. Cloner le projet
+2. Installer les dépendances : `npm install`
+3. Configurer le fichier `.env`
+4. Créer la base de données MySQL
+5. Démarrer le serveur : `npm run dev`
 
-## Getting Started
+## Scripts disponibles
 
-### Prerequisites
+- `npm start` : Démarre le serveur en production
+- `npm run dev` : Démarre le serveur en mode développement avec nodemon
 
-- Node.js (v14 or higher)
-- npm (v6 or higher)
+## Structure du projet
 
-### Installation
-
-1. Clone the repository
-2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Create a `.env` file based on `.env.example`
-4. Start the development server:
-   ```
-   npm run dev
-   ```
+```
+├── config/          # Configuration de la base de données et de l'app
+├── controllers/     # Contrôleurs pour la logique métier
+├── middleware/      # Middlewares personnalisés
+├── models/          # Modèles de données
+├── routes/          # Définition des routes
+├── services/        # Services (API externe, authentification, etc.)
+├── utils/           # Utilitaires et helpers
+├── app.js          # Configuration de l'application Express
+└── server.js       # Point d'entrée du serveur
+```
 
 ## API Endpoints
 
-### Game Collections
+### Authentification
+- `POST /api/auth/register` - Inscription
+- `POST /api/auth/login` - Connexion
+- `POST /api/auth/logout` - Déconnexion
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /api/gamescollections | Get all game collections |
-| GET | /api/gamescollections/:id | Get a specific game collection |
-| POST | /api/gamescollections | Create a new game collection |
-| PUT | /api/gamescollections/:id | Update a game collection |
-| DELETE | /api/gamescollections/:id | Delete a game collection |
+### Jeux
+- `GET /api/games` - Liste des jeux
+- `GET /api/games/search` - Rechercher des jeux
+- `GET /api/games/:id` - Détails d'un jeu
 
-## Project Structure
+### Collections
+- `GET /api/collections` - Collections de l'utilisateur
+- `POST /api/collections` - Créer une collection
+- `PUT /api/collections/:id` - Modifier une collection
+- `DELETE /api/collections/:id` - Supprimer une collection
+- `POST /api/collections/:id/games` - Ajouter un jeu à une collection
 
-```
-src/
-├── app.js             # Express app setup
-├── server.js          # Entry point
-├── config/            # Configuration settings
-├── routes/            # Route definitions
-├── controllers/       # Route controllers
-├── models/            # Data models
-├── services/          # Business logic
-├── middleware/        # Custom middleware
-├── validations/       # Request validation schemas
-```
-
-## Running in Production
-
-```
-npm start
-```
-
-## License
-
-MIT
+### Administration
+- `GET /api/admin/users` - Liste des utilisateurs
+- `GET /api/admin/games` - Gestion des jeux
+- `GET /api/admin/logs` - Logs d'activité
