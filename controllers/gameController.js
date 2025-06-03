@@ -1,5 +1,8 @@
 const { validationResult } = require('express-validator');
+const { Op } = require('sequelize');
 const Game = require('../models/Game');
+const Platform = require('../models/Platform');
+const Genre = require('../models/Genre');
 const GamePlatform = require('../models/GamePlatform');
 const GameGenre = require('../models/GameGenre');
 const { logAction } = require('../services/logService');
