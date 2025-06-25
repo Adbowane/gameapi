@@ -8,6 +8,8 @@ const gamesRoutes = require('./routes/games');
 const collectionRoutes = require('./routes/collections');
 const adminRoutes = require('./routes/admin');
 const userRoutes = require('./routes/users');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
 
 const app = express();
 
@@ -32,9 +34,12 @@ app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Swagger documentation route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // API routes
 app.use('/api/auth', authRoutes);
-app.use('/games', gamesRoutes);
+app.use('/api/games', gamesRoutes);
 app.use('/api/collections', collectionRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/users', userRoutes);

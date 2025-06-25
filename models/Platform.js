@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Game = require('./Game');
 
 const Platform = sequelize.define('Platform', {
   id: {
@@ -38,5 +39,9 @@ const Platform = sequelize.define('Platform', {
   createdAt: 'created_at',
   updatedAt: false,
 });
-
+// Platform.belongsToMany(Game, {
+//   through: 'GamePlatform',
+//   foreignKey: 'platform_id',
+//   otherKey: 'game_id'
+// });
 module.exports = Platform;
