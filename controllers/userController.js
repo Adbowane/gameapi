@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
-const UserFavorite = require('../models/UserFavorite');
+// const UserFavorite = require('../models/UserFavorite');
 const { logAction } = require('../services/logService');
 
 const getUserProfile = async (req, res, next) => {

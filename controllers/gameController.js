@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator');
 const Game = require('../models/Game');
-const GamePlatform = require('../models/GamePlatform');
-const GameGenre = require('../models/GameGenre');
+// const GamePlatform = require('../models/GamePlatform');
+// const GameGenre = require('../models/GameGenre');
 const { logAction } = require('../services/logService');
 
 const createGame = async (req, res, next) => {
