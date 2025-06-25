@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const Collection = require('../models/Collection');
-// const CollectionGame = require('../models/CollectionGame');
+const Game = require('../models/Game');
+const CollectionGame = require('../models/CollectionGame');
 const { logAction } = require('../services/logService');
 
 const createCollection = async (req, res, next) => {

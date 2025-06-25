@@ -1,7 +1,5 @@
+const { Game, Platform, Genre, GamePlatform, GameGenre } = require('../models');
 const { validationResult } = require('express-validator');
-const Game = require('../models/Game');
-// const GamePlatform = require('../models/GamePlatform');
-// const GameGenre = require('../models/GameGenre');
 const { logAction } = require('../services/logService');
 
 const createGame = async (req, res, next) => {
@@ -47,10 +45,7 @@ const getGames = async (req, res, next) => {
       where,
       limit: parseInt(limit),
       offset: (page - 1) * limit,
-      include: [
-        { model: Platform, through: GamePlatform },
-        { model: Genre, through: GameGenre },
-      ],
+      include: [Platform, Genre],
     });
 
     res.json({
@@ -66,10 +61,7 @@ const getGames = async (req, res, next) => {
 const getGameById = async (req, res, next) => {
   try {
     const game = await Game.findByPk(req.params.id, {
-      include: [
-        { model: Platform, through: GamePlatform },
-        { model: Genre, through: GameGenre },
-      ],
+      include: [Platform, Genre],
     });
     if (!game) return res.status(404).json({ message: 'Game not found' });
     res.json(game);

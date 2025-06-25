@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // API routes
 app.use('/api/auth', authRoutes);
-app.use('/games', gamesRoutes);
+app.use('/api/games', gamesRoutes);
 app.use('/api/collections', collectionRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/users', userRoutes);

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const UserSession = require('../models/UserSession');
 const { logAction } = require('../services/logService');
+const { Op } = require('sequelize');
 
 const authMiddleware = async (req, res, next) => {
   try {
