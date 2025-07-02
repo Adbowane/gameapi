@@ -16,9 +16,14 @@ app.use(helmet());
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*',
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:8082',
+    'https://7e96-2a02-8440-b50d-2ad4-8930-fa9d-f30b-19f8.ngrok-free.app',
+    'https://brilliant-eclair-660f9a.netlify.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning'],
 }));
 
 // Rate limiting
